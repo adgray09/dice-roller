@@ -33,33 +33,43 @@ function rollDice(max) {
 }
 
 function instantDeathRoll() {
-    let counter = 0;
-    for(i = 0; i < 4; i++) {
-        if (counter === 3) {
-            console.log("You are dead")
-            break
-        }
+    let save_counter = 0;
+    let death_counter = 0;
+    for(i = 0; i < 10; i++) {
+    
 
         const theRoll = rollDice20()
         // console.log("You rolled a", theRoll)
-        
-        if (theRoll < 11) {
-            counter += 1
-            if (counter === 2) {
-                console.log("you rolled a", theRoll, "you have", (3-counter), "roll left" )
-            } else if (counter === 1) {
-                console.log("you rolled a", theRoll, "you have", (3-counter), "rolls left" )
-            } else {
-                console.log("you rolled a", theRoll, "you have 0 rolls left!")
+            if (death_counter >= 3) {
+                console.log("You are dead")
+                break
+            } 
+            if (save_counter >= 3) {
+                console.log("You are stable!")
+                break
             }
-        } else if (theRoll > 11) {
-            // counter += 1
-            console.log("you rolled a", theRoll, "you lived!")
-            break 
-        
+            if (theRoll === 1) {
+                death_counter += 2
+                console.log("you rolled a ", theRoll, "your death counter is at", death_counter + "/3")
+            }
+
+            if (theRoll === 20) {
+                console.log("You rolled a crit", theRoll, "you now have 1hp")
+                break
+            }
+
+            if (theRoll < 10 && theRoll > 1) {
+                death_counter += 1
+                console.log("you rolled a", theRoll, "your death counter is at", death_counter + "/3")
+            }
+
+            if (theRoll >= 10 && theRoll < 20) {
+                save_counter += 1
+                console.log("you rolled a", theRoll, "your save counter is at", save_counter + "/3")
+            }
+
+        }
     }
-    }
-}
 
 module.exports = {
     rollUnrealisticDice,
