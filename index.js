@@ -47,8 +47,10 @@ function instantDeathRoll() {
             counter += 1
             if (counter === 2) {
                 console.log("you rolled a", theRoll, "you have", (3-counter), "roll left" )
-            } else {
+            } else if (counter === 1) {
                 console.log("you rolled a", theRoll, "you have", (3-counter), "rolls left" )
+            } else {
+                console.log("you rolled a", theRoll, "you have 0 rolls left!")
             }
         } else if (theRoll > 11) {
             // counter += 1
@@ -58,9 +60,6 @@ function instantDeathRoll() {
     }
     }
 }
-
-
-instantDeathRoll()
 
 module.exports = {
     rollUnrealisticDice,
