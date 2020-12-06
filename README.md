@@ -14,6 +14,7 @@ $ 2
 ```javascript
 rollDice(number) // roll 1 to number of your choice
 rollUnrealisticDice(min, max) // roll between certain range
+instantDeathRoll() // will instantly roll 3 times to see if you live your death roll
 rollDice6() 
 rollDice8()
 rollDice10()
